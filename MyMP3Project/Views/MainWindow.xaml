@@ -12,5 +12,28 @@
     </Window.DataContext>
     <Grid>
 
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Menu Grid.ColumnSpan="2">
+            <MenuItem Header="File">
+                <MenuItem Header="Directory"></MenuItem>
+                <MenuItem Header="Exit"></MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Back" Width="50"></Button>
+            <Button Content="Play" Width="50"></Button>
+            <Button Content="Next" Width="50"></Button>
+        </StackPanel>
+        
     </Grid>
 </Window>
