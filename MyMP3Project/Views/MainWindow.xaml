@@ -18,18 +18,27 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
         
-        <Menu Grid.ColumnSpan="2">
+        <Menu Grid.ColumnSpan="2" VerticalAlignment="Top" Height="Auto" Width="Auto">
             <MenuItem Header="File">
                 <MenuItem Header="Directory"></MenuItem>
                 <MenuItem Header="Exit"></MenuItem>
             </MenuItem>
         </Menu>
 
-        <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+        <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Mp3Directories}" SelectedItem="{Binding SelectedDirectory}" SelectionMode="Single">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"></TextBlock>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Back" Width="50"></Button>
             <Button Content="Play" Width="50"></Button>
             <Button Content="Next" Width="50"></Button>

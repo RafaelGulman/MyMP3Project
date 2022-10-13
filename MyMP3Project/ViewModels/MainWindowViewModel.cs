@@ -11,6 +11,8 @@ namespace MyMP3Project.ViewModels
 
         public ObservableCollection<Mp3Directory> Mp3Directories { get; set; }
 
+        public Mp3Directory SelectedDirectory { get; set; }
+
         #endregion
 
         #region Commands
