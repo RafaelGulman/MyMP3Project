@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:MyMP3Project"
         xmlns:vm="clr-namespace:MyMP3Project.ViewModels"
         mc:Ignorable="d"
+        xmlns:b="http://schemas.microsoft.com/xaml/behaviors"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
         <vm:MainWindowViewModel></vm:MainWindowViewModel>
@@ -31,6 +32,11 @@
         </Menu>
 
         <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Mp3Directories}" SelectedItem="{Binding SelectedDirectory}" SelectionMode="Single">
+            <b:Interaction.Triggers>
+                <b:EventTrigger EventName="MouseDoubleClick">
+                    <b:InvokeCommandAction Command="{Binding OpenDirectoryCommand}" CommandParameter="{Binding SelectedDirectory}"/>
+                </b:EventTrigger>
+            </b:Interaction.Triggers>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"></TextBlock>
@@ -39,7 +45,7 @@
         </ListView>
 
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Back" Width="50" Command="{Binding OpenDirectoryCommand}"></Button>
+            <Button Content="Back" Width="50"></Button>
             <Button Content="Play" Width="50"></Button>
             <Button Content="Next" Width="50"></Button>
         </StackPanel>
