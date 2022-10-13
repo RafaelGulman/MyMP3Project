@@ -26,7 +26,7 @@
         <Menu Grid.ColumnSpan="2" VerticalAlignment="Top" Height="Auto" Width="Auto">
             <MenuItem Header="File">
                 <MenuItem Header="Directory"></MenuItem>
-                <MenuItem Header="Exit"></MenuItem>
+                <MenuItem Header="Exit" Command="{Binding CloseProgramCommand}"></MenuItem>
             </MenuItem>
         </Menu>
 
