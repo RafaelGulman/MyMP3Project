@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows;
 using MyMP3Project.Infrastructure.Commands;
+using System.IO;
 
 namespace MyMP3Project.ViewModels
 {
@@ -33,11 +34,31 @@ namespace MyMP3Project.ViewModels
 
         #endregion
 
+        #region OpenDirectoryCommand
+
+        public ICommand OpenDirectoryCommand { get; }
+
+        protected bool CanOpenDirectoryCommand(object p) => true;
+
+        protected void OnOpenDirectoryCommand(object p)
+        {
+            string path = SelectedDirectory.Name;
+            Mp3Directories.Clear();
+
+            foreach (var directory in Directory.GetDirectories(path))
+            {
+                Mp3Directories.Add(new Mp3Directory(directory));
+            }
+        }
+
+        #endregion
+
         #endregion
 
         public MainWindowViewModel()
         {
             CloseProgramCommand = new LambdaCommand(OnCloseProgramCommandExecute, CanCloseProgramCommandExecute);
+            OpenDirectoryCommand = new LambdaCommand(OnOpenDirectoryCommand, CanOpenDirectoryCommand);
 
             Mp3Directories =  Mp3Services.InitializeObservableCollection();
         }

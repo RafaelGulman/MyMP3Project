@@ -39,7 +39,7 @@
         </ListView>
 
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button Content="Back" Width="50"></Button>
+            <Button Content="Back" Width="50" Command="{Binding OpenDirectoryCommand}"></Button>
             <Button Content="Play" Width="50"></Button>
             <Button Content="Next" Width="50"></Button>
         </StackPanel>
