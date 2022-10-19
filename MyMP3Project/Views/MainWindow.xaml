@@ -19,30 +19,40 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
-        
-        <Menu Grid.ColumnSpan="2" VerticalAlignment="Top" Height="Auto" Width="Auto">
-            <MenuItem Header="File">
-                <MenuItem Header="Directory"></MenuItem>
-                <MenuItem Header="Exit" Command="{Binding CloseProgramCommand}"></MenuItem>
-            </MenuItem>
-        </Menu>
 
-        <ListView Grid.Column="0" Grid.Row="1" ItemsSource="{Binding Mp3Directories}" SelectedItem="{Binding SelectedDirectory}" SelectionMode="Single">
-            <b:Interaction.Triggers>
-                <b:EventTrigger EventName="MouseDoubleClick">
-                    <b:InvokeCommandAction Command="{Binding OpenDirectoryCommand}" CommandParameter="{Binding SelectedDirectory}"/>
-                </b:EventTrigger>
-            </b:Interaction.Triggers>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{Binding Name}"></TextBlock>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+
+
+        <StackPanel Grid.Column="0">
+
+            <Menu Grid.ColumnSpan="2" VerticalAlignment="Top" Height="Auto" Width="Auto">
+                <MenuItem Header="File">
+                    <MenuItem Header="Directory"></MenuItem>
+                    <MenuItem Header="Exit" Command="{Binding CloseProgramCommand}"></MenuItem>
+                </MenuItem>
+            </Menu>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Height="20" Width="20" Content="&lt;-" Command="{Binding BackDirectoryCommand}"></Button>
+                <Button Height="20" Width="20" Content="->"></Button>
+            </StackPanel>
+
+            <ListView ItemsSource="{Binding Mp3Directories}" SelectedItem="{Binding SelectedDirectory}" SelectionMode="Single">
+                <b:Interaction.Triggers>
+                    <b:EventTrigger EventName="MouseDoubleClick">
+                        <b:InvokeCommandAction Command="{Binding OpenDirectoryCommand}" CommandParameter="{Binding SelectedDirectory}"/>
+                    </b:EventTrigger>
+                </b:Interaction.Triggers>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding CurrentDirectory}"></TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
             <Button Content="Back" Width="50"></Button>

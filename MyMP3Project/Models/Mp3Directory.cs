@@ -8,8 +8,11 @@ namespace MyMP3Project.Models
 {
     public class Mp3Directory
     {
-        public string Name { get; }
+        public string CurrentDirectory { get; }
 
-        public Mp3Directory(string name) => Name = name;
+        public Mp3Directory(string curr)
+        {
+            CurrentDirectory = curr;
+        }
     }
 }
